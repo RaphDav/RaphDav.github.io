@@ -4,24 +4,126 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="claude:viewport-fit-sides" content="cover">
-<title>Raph · Finance</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&family=Manrope:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<title>Raphaël · Finance</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="style.css">
+<style>
+/* Accueil large : héros en deux colonnes, bandeau de thèmes, trois grandes cartes illustrées, repères chiffrés */
+.big{max-width:1180px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.hero2{padding-block:72px 56px;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.hero2 .txt{display:grid;gap:20px;min-width:0}
+.hero2 h1{font-family:var(--display);font-weight:700;font-size:clamp(44px,6.5vw,80px);line-height:1;margin:0;color:var(--navy);letter-spacing:-.03em}
+.hero2 .role{font-size:18px;color:var(--ink);font-weight:600}
+.hero2 .intro{font-size:17px;color:var(--muted);max-width:52ch}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;text-decoration:none;font-weight:600;font-size:15px;border:1px solid var(--navy);color:var(--navy);transition:background .18s,color .18s}
+.btn.primary{background:var(--navy);color:var(--bg-2)}
+.btn:hover{background:var(--tie);border-color:var(--tie);color:var(--bg-2)}
+.frame{position:relative;justify-self:center;width:min(380px,100%);aspect-ratio:1;max-width:100%}
+.halo{position:absolute;inset:6%;border-radius:50%;background:radial-gradient(circle at 35% 30%, var(--tie), var(--navy) 70%);transform:translate(7%,5%);opacity:.9}
+.ring{position:absolute;inset:0;border-radius:50%;border:1px solid var(--line)}
+.frame img{position:relative;width:78%;height:78%;margin:11%;border-radius:50%;object-fit:cover;border:6px solid var(--card);box-shadow:0 24px 60px var(--shadow)}
+.badge{position:absolute;left:-4%;bottom:-4%;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;box-shadow:0 8px 24px var(--shadow);display:grid;gap:2px}
+.badge b{font-size:14px}
+.badge span{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.04em}
+
+
+.cards{padding-block:24px 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.tile{display:grid;grid-template-rows:auto 1fr;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:var(--ink);box-shadow:0 1px 2px var(--shadow);transition:transform .2s,box-shadow .2s,border-color .2s}
+.tile:hover{transform:translateY(-4px);box-shadow:0 18px 40px var(--shadow);border-color:var(--tie)}
+.tile:focus-visible{outline:2px solid var(--tie);outline-offset:3px}
+.cover{aspect-ratio:16/10;background:var(--bg-2);border-bottom:1px solid var(--line);display:block}
+.cover svg{width:100%;height:100%;display:block}
+.tile-body{padding:22px 24px 24px;display:grid;gap:8px;align-content:start}
+.tile-body strong{font-family:var(--display);font-weight:700;font-size:28px;color:var(--navy);line-height:1.15}
+.tile-body p{color:var(--muted);font-size:15px}
+.tile-body .go{margin-top:8px;font-weight:600;font-size:14px;color:var(--tie)}
+
+.facts{padding-block:40px 72px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line);margin-top:40px}
+.fact{padding:24px 20px 0 0;display:grid;gap:4px}
+.fact b{font-family:var(--display);font-weight:700;font-size:30px;color:var(--navy);line-height:1.1}
+.fact span{font-size:14px;color:var(--muted)}
+.foot2{border-top:1px solid var(--line)}
+.foot2 .big{padding-block:22px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+
+@media (max-width:900px){
+  .hero2{grid-template-columns:1fr;gap:32px;padding-block:48px 40px}
+  .frame{order:-1;width:min(300px,80%)}
+  .cards{grid-template-columns:1fr}
+  .facts{grid-template-columns:repeat(2,1fr)}
+}
+@media (prefers-reduced-motion: reduce){.tile,.btn{transition:none}.tile:hover{transform:none}}
+</style>
 </head>
-<body class="home">
-<main class="wrap">
-  <img class="portrait" src="photo.jpg" alt="Portrait de Raph" width="148" height="148">
-  <div class="who">
-    <h1>Raph</h1>
-    <div class="role">Analyst Multi-Assets chez IGEA Finance · Master Gestion des Instruments Financiers</div>
-    <div class="tags"><span>Hedge funds</span><span>Crédit</span><span>CLO</span><span>Multigestion</span></div>
+<body>
+
+<main>
+<section class="big hero2">
+  <div class="txt">
+    <span class="kicker">Analyst Multi-Assets · IGEA Finance</span>
+    <h1>Raphaël</h1>
+    <div class="role">Analyste multi-asset, spécialiste hedge funds</div>
+    <p class="intro">Alternant en multigestion à Paris et étudiant en M2 Gestion des Instruments Financiers. J'analyse les hedge funds et l'ensemble des stratégies alternatives, je suis aussi les marchés actions, et je publie chaque matin une lecture des marchés.</p>
+    <div class="cta">
+      <a class="btn primary" href="newsletter.html">Lire le Brief</a>
+      <a class="btn" href="cv.html">Voir mon CV</a>
+    </div>
   </div>
-  <nav class="entries" aria-label="Sections du site">
-    <a class="entry" href="newsletter.html"><span><strong>Newsletter</strong><small>Le Brief de Raph, chaque matin : marchés, crédit, alternatif</small></span><span class="arrow" aria-hidden="true">→</span></a>
-    <a class="entry" href="projets.html"><span><strong>Projets</strong><small>Analyse crédit, notation, outils multi-actifs, associatif</small></span><span class="arrow" aria-hidden="true">→</span></a>
-    <a class="entry" href="cv.html"><span><strong>CV</strong><small>Parcours, formation et compétences</small></span><span class="arrow" aria-hidden="true">→</span></a>
-  </nav>
-  <p class="foot">75016 - Paris</p>
+  <div class="frame">
+    <span class="halo" aria-hidden="true"></span>
+    <span class="ring" aria-hidden="true"></span>
+    <img src="photo.jpg" alt="Portrait de Raphaël" width="320" height="320">
+    <div class="badge"><b>Le Brief de Raph</b><span>Quotidien depuis le 3 nov. 2026</span></div>
+  </div>
+</section>
+
+<nav class="big cards" aria-label="Sections du site">
+  <a class="tile" href="newsletter.html">
+    <span class="cover"><svg viewBox="0 0 320 200" aria-hidden="true">
+      <rect x="70" y="22" width="180" height="170" rx="4" fill="var(--card)" stroke="var(--line)"/>
+      <text x="160" y="50" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-size="16" font-weight="700" fill="var(--navy)">Le Brief de Raph</text>
+      <line x1="84" y1="60" x2="236" y2="60" stroke="var(--navy)" stroke-width="1.5"/>
+      <rect x="84" y="70" width="70" height="46" fill="var(--tie)" opacity=".18"/>
+      <polyline points="88,108 100,98 112,102 124,88 136,92 150,78" fill="none" stroke="var(--tie)" stroke-width="2"/>
+      <g fill="var(--line)"><rect x="164" y="72" width="72" height="5"/><rect x="164" y="83" width="64" height="5"/><rect x="164" y="94" width="70" height="5"/><rect x="164" y="105" width="52" height="5"/>
+      <rect x="84" y="128" width="152" height="5"/><rect x="84" y="139" width="140" height="5"/><rect x="84" y="150" width="148" height="5"/><rect x="84" y="161" width="110" height="5"/><rect x="84" y="172" width="130" height="5"/></g>
+    </svg></span>
+    <span class="tile-body"><strong>Newsletter</strong><p>Le Brief de Raph : marchés, actions et gestion alternative, chaque matin en quelques minutes.</p><span class="go">Lire les numéros →</span></span>
+  </a>
+  <a class="tile" href="projets.html">
+    <span class="cover"><svg viewBox="0 0 320 200" aria-hidden="true">
+      <line x1="30" y1="120" x2="290" y2="120" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <path d="M30 70 C60 56 80 84 105 62 C130 44 150 80 170 96 C190 112 215 104 235 122 C255 136 270 112 290 118 L290 120 L30 120 Z" fill="var(--tie)" opacity=".12"/>
+      <path d="M30 70 C60 56 80 84 105 62 C130 44 150 80 170 96 C190 112 215 104 235 122 C255 136 270 112 290 118" fill="none" stroke="var(--tie)" stroke-width="2.5"/>
+      <g font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--muted)">
+        <text x="30" y="160">1997</text><text x="290" y="160" text-anchor="end">2026</text>
+        <text x="294" y="124">0</text>
+        <text x="30" y="40" fill="var(--navy)" font-weight="500">Alpha glissant · hedge funds</text>
+      </g>
+    </svg></span>
+    <span class="tile-body"><strong>Projets</strong><p>Étude empirique sur l'alpha des hedge funds, outils de suivi multi-actifs et travaux d'analyse fondamentale.</p><span class="go">Voir les projets →</span></span>
+  </a>
+  <a class="tile" href="cv.html">
+    <span class="cover"><svg viewBox="0 0 320 200" aria-hidden="true">
+      <line x1="40" y1="100" x2="280" y2="100" stroke="var(--line)" stroke-width="2"/>
+      <g font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="middle" fill="var(--muted)">
+        <circle cx="70" cy="100" r="9" fill="var(--card)" stroke="var(--navy)" stroke-width="2"/><text x="70" y="78">2024</text><text x="70" y="128">Stages</text>
+        <circle cx="160" cy="100" r="9" fill="var(--card)" stroke="var(--navy)" stroke-width="2"/><text x="160" y="78">2025</text><text x="160" y="128">Corporatings</text>
+        <circle cx="250" cy="100" r="11" fill="var(--tie)"/><text x="250" y="78" fill="var(--tie)">2026</text><text x="250" y="128" fill="var(--tie)">IGEA Finance</text>
+      </g>
+    </svg></span>
+    <span class="tile-body"><strong>CV</strong><p>Parcours en alternance, formation, certification Bloomberg et outils.</p><span class="go">Voir le parcours →</span></span>
+  </a>
+</nav>
+
+<section class="big facts" aria-label="Repères">
+  <div class="fact"><b>1997 – 2026</b><span>historique étudié sur l'alpha des hedge funds</span></div>
+  <div class="fact"><b>4</b><span>expériences en finance depuis 2024</span></div>
+  <div class="fact"><b>Chaque matin</b><span>un nouveau numéro du Brief</span></div>
+  <div class="fact"><b>BMC</b><span>certification Bloomberg Market Concepts</span></div>
+</section>
 </main>
+
+<footer class="foot2"><div class="big"><span>Raphaël · Paris</span><span>Contenus présentés sans données confidentielles</span></div></footer>
 </body>
 </html>

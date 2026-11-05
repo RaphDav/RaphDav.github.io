@@ -3,9 +3,9 @@
 :root{
   --bg:#e9ebee; --bg-2:#f6f7f8; --card:#ffffff; --ink:#131c2c; --navy:#1c2b46;
   --tie:#2e4a7c; --muted:#5a6372; --line:#d2d6dc; --shadow:rgba(19,28,44,.10);
-  --display:"Libre Caslon Text", Georgia, "Times New Roman", serif;
-  --body:"Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --display:"Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body:"Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
   color-scheme:light;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
@@ -29,7 +29,7 @@ p{margin:0;max-width:65ch}
 .home .wrap{max-width:560px;padding-block:64px 56px;display:grid;gap:36px;justify-items:center;text-align:center}
 .portrait{width:148px;height:148px;border-radius:50%;object-fit:cover;border:4px solid var(--card);box-shadow:0 10px 30px var(--shadow)}
 .who{display:grid;gap:8px;justify-items:center}
-.who h1{font-family:var(--display);font-weight:400;font-size:clamp(36px,7vw,48px);line-height:1.1;margin:0;color:var(--navy)}
+.who h1{font-family:var(--display);font-weight:700;letter-spacing:-.02em;font-size:clamp(36px,7vw,48px);line-height:1.1;margin:0;color:var(--navy)}
 .role{font-size:15px;color:var(--muted)}
 .tags{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:6px}
 .tags span{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:3px;padding:2px 8px}
@@ -40,7 +40,7 @@ p{margin:0;max-width:65ch}
   text-decoration:none;color:var(--ink);box-shadow:0 1px 2px var(--shadow);
   transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease}
 .entry:hover{transform:translateY(-2px);box-shadow:0 12px 28px var(--shadow);border-color:var(--tie)}
-.entry strong{display:block;font-family:var(--display);font-weight:400;font-size:26px;color:var(--navy);line-height:1.2}
+.entry strong{display:block;font-family:var(--display);font-weight:700;letter-spacing:-.02em;font-size:26px;color:var(--navy);line-height:1.2}
 .entry small{display:block;color:var(--muted);font-size:14px;margin-top:4px}
 .entry .arrow{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:var(--bg-2);font-size:20px;transition:background .18s ease}
 .entry:hover .arrow{background:var(--tie)}
@@ -59,13 +59,13 @@ p{margin:0;max-width:65ch}
 .page .wrap{padding-block:48px 72px;display:grid;gap:40px}
 .page-head{display:grid;gap:10px}
 .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.page-head h1{font-family:var(--display);font-weight:400;font-size:clamp(32px,6vw,44px);line-height:1.1;margin:0;color:var(--navy);text-wrap:balance}
+.page-head h1{font-family:var(--display);font-weight:700;letter-spacing:-.02em;font-size:clamp(32px,6vw,44px);line-height:1.1;margin:0;color:var(--navy);text-wrap:balance}
 .page-head p{font-size:17px;color:var(--muted)}
-h2{font-family:var(--display);font-weight:400;font-size:24px;margin:0;color:var(--navy)}
+h2{font-family:var(--display);font-weight:700;letter-spacing:-.02em;font-size:24px;margin:0;color:var(--navy)}
 
 .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:24px;display:grid;gap:14px}
 .card-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
-.card h3{font-family:var(--display);font-weight:400;font-size:21px;margin:0;color:var(--navy);text-wrap:balance}
+.card h3{font-family:var(--display);font-weight:700;letter-spacing:-.02em;font-size:21px;margin:0;color:var(--navy);text-wrap:balance}
 .pill{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--tie);border:1px solid var(--tie);border-radius:3px;padding:2px 8px;white-space:nowrap}
 dl.terms{display:grid;grid-template-columns:100px 1fr;gap:6px 16px;margin:0;font-size:15px}
 dl.terms dt{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding-top:4px}
