@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Raph · Finance</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout : colonne éditoriale unique, bandeau vert anglais en tête, fiches projets façon « term sheet » */
+:root{
+  --green:#1f4a3a; --green-ink:#163428; --sand:#e9dfc9; --sand-soft:#f4efe3;
+  --bg:#faf8f2; --fg:#1d241f; --muted:#5d6a60; --line:#d8d0bc; --card:#fffdf7;
+  --on-green:#f4efe3; --accent:#9a7b3c;
+  --display:"Young Serif", Georgia, "Times New Roman", serif;
+  --body:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --green:#2c6450; --green-ink:#14271f; --sand:#3a3527; --sand-soft:#24221b;
+  --bg:#151a17; --fg:#ebe5d6; --muted:#a3ab9f; --line:#34392f; --card:#1c221e;
+  --on-green:#f1ead8; --accent:#cfae6a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --green:#2c6450; --green-ink:#14271f; --sand:#3a3527; --sand-soft:#24221b;
+  --bg:#151a17; --fg:#ebe5d6; --muted:#a3ab9f; --line:#34392f; --card:#1c221e;
+  --on-green:#f1ead8; --accent:#cfae6a; color-scheme:dark}
+
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6}
+.wrap{max-width:820px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:var(--green)}
+:root[data-theme="dark"] a{color:var(--accent)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) a{color:var(--accent)}}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+header.hero{background:var(--green-ink);color:var(--on-green)}
+header.hero .wrap{padding-block:56px 44px;display:grid;gap:14px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(40px,8vw,64px);line-height:1.05;margin:0;text-wrap:balance}
+.lede{max-width:58ch;margin:0;font-size:18px;opacity:.92}
+.tape{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.tape span{font-family:var(--mono);font-size:12px;border:1px solid color-mix(in srgb,var(--on-green) 35%,transparent);border-radius:3px;padding:3px 8px}
+
+main .wrap{display:grid;gap:64px;padding-block:56px 72px}
+section{display:grid;gap:20px}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding-bottom:10px;flex-wrap:wrap}
+h2{font-family:var(--display);font-weight:400;font-size:28px;margin:0}
+.sec-head small{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+p{margin:0;max-width:65ch}
+
+/* Brief */
+.brief{background:var(--sand-soft);border:1px solid var(--line);border-radius:6px;padding:28px;display:grid;gap:18px}
+.brief-title{font-family:var(--display);font-size:30px;color:var(--green);margin:0}
+:root[data-theme="dark"] .brief-title{color:var(--accent)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .brief-title{color:var(--accent)}}
+.rubriques{display:flex;flex-wrap:wrap;gap:8px}
+.rubriques span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:14px}
+.issues{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.issues li{display:grid;grid-template-columns:72px 1fr auto;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.issues .no{font-family:var(--mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.issues .date{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.note{font-size:14px;color:var(--muted)}
+
+/* Projets : fiches term sheet */
+.projects{display:grid;gap:18px}
+.proj{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:24px;display:grid;gap:14px}
+.proj-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+.proj h3{font-family:var(--display);font-weight:400;font-size:22px;margin:0;text-wrap:balance}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--green);background:var(--sand);border-radius:3px;padding:3px 8px;white-space:nowrap}
+:root[data-theme="dark"] .tag{color:var(--accent)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tag{color:var(--accent)}}
+dl.terms{display:grid;grid-template-columns:110px 1fr;gap:6px 16px;margin:0;font-size:15px}
+dl.terms dt{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding-top:3px}
+dl.terms dd{margin:0;min-width:0}
+
+/* Parcours */
+.timeline{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.timeline li{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.timeline .when{font-family:var(--mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:2px}
+.timeline strong{font-weight:600}
+.timeline .role{display:block;color:var(--muted);font-size:15px}
+
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.skills div{display:grid;gap:6px}
+.skills h4{margin:0;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500}
+
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:24px;font-size:14px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:560px){
+  dl.terms{grid-template-columns:1fr;gap:2px}
+  dl.terms dd{margin-bottom:8px}
+  .timeline li{grid-template-columns:1fr;gap:4px}
+  .issues li{grid-template-columns:56px 1fr}
+  .issues .date{grid-column:2}
+  .brief{padding:20px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Analyst Multi-Assets · IGEA Finance · M2 GIF</div>
+    <h1>Raph</h1>
+    <p class="lede">Alternant en multigestion à Paris. J'analyse des fonds alternatifs, du crédit et des CLO, et je publie chaque jour une lecture des marchés dans Le Brief de Raph.</p>
+    <div class="tape">
+      <span>Hedge funds</span><span>Crédit</span><span>CLO</span><span>L/S equity</span><span>Fixed income</span><span>Python · VBA</span>
+    </div>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <section id="brief" aria-labelledby="h-brief">
+    <div class="sec-head"><h2 id="h-brief">Newsletter</h2><small>Quotidienne depuis le 3 nov. 2026</small></div>
+    <div class="brief">
+      <p class="brief-title">Le Brief de Raph</p>
+      <p>Chaque matin, l'essentiel des marchés, du crédit et de la gestion alternative, en quelques minutes de lecture. Les informations citées viennent uniquement de la presse financière et des publications de banques.</p>
+      <div class="rubriques" aria-label="Thèmes couverts">
+        <span>Marchés</span><span>Crédit</span><span>Alternatif</span>
+      </div>
+      <ul class="issues" aria-label="Numéros publiés">
+        <li><span class="no">N° 1</span><span>Premier numéro</span><span class="date">3 nov. 2026</span></li>
+      </ul>
+      <p class="note">Les numéros suivants seront ajoutés à cette archive au fil des publications.</p>
+    </div>
+  </section>
+
+  <section id="projets" aria-labelledby="h-projets">
+    <div class="sec-head"><h2 id="h-projets">Projets</h2><small>Méthodes et outils</small></div>
+    <div class="projects">
+
+      <article class="proj">
+        <div class="proj-top"><h3>Scorecards crédit selon la méthodologie Moody's</h3><span class="tag">Crédit corporate</span></div>
+        <p>Construction de grilles de notation pour un portefeuille d'environ 25 émetteurs cotés (technologie, biotech, énergie, défense, mobilité), à partir des rapports annuels et des dépôts réglementaires.</p>
+        <dl class="terms">
+          <dt>Méthode</dt><dd>Retraitements Moody's : rémunération en actions, intérêts capitalisés, affacturage inversé, earn-outs, capital hybride. Cascades FFO, RCF et FOCF.</dd>
+          <dt>Périmètre</dt><dd>Compte de résultat, bilan et flux de trésorerie standardisés ; séparation dette financière, dette locative, engagements de retraite et ARO.</dd>
+          <dt>Cadre</dt><dd>Alternance chez Corporatings, fintech d'analyse crédit</dd>
+        </dl>
+      </article>
+
+      <article class="proj">
+        <div class="proj-top"><h3>Shadow rating d'une holding obligataire</h3><span class="tag">Notation</span></div>
+        <p>Notation fantôme d'un émetteur obligataire de type holding familiale, selon une méthodologie holding inspirée de S&amp;P.</p>
+        <dl class="terms">
+          <dt>Méthode</dt><dd>Valeur des participations rapportée à la dette autonome de la holding (LTV), analyse de la dette consolidée et de la dette des filiales, lecture des comptes sociaux déposés.</dd>
+          <dt>Cadre</dt><dd>Alternance chez Corporatings</dd>
+        </dl>
+      </article>
+
+      <article class="proj">
+        <div class="proj-top"><h3>Outils d'allocation et de suivi multi-actifs</h3><span class="tag">Multigestion</span></div>
+        <p>Outils internes pour suivre et piloter un encours investi en fonds alternatifs, long/short equity, taux et CLO.</p>
+        <dl class="terms">
+          <dt>Outils</dt><dd>Optimisation de portefeuille et backtesting en Python, VBA et Excel ; suivi quotidien du P&amp;L.</dd>
+          <dt>Usage</dt><dd>Préparation du comité d'investissement hebdomadaire et des rendez-vous avec les gérants.</dd>
+          <dt>Cadre</dt><dd>Alternance chez IGEA Finance</dd>
+        </dl>
+      </article>
+
+      <article class="proj">
+        <div class="proj-top"><h3>Financial Student Challenge</h3><span class="tag">Associatif</span></div>
+        <p>Concours étudiant gratuit de gestion de portefeuille virtuel, porté par une association loi 1901, avec reversement des fonds collectés à l'association Télémaque. Objectif de 500 participants.</p>
+        <dl class="terms">
+          <dt>Rôle</dt><dd>Chef d'atelier : conception et animation des ateliers d'initiation aux marchés, logistique, retours des participants.</dd>
+          <dt>Cadre</dt><dd>Atelier Projet, M2 GIF</dd>
+        </dl>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="parcours" aria-labelledby="h-parcours">
+    <div class="sec-head"><h2 id="h-parcours">Parcours</h2><small>Expériences</small></div>
+    <ul class="timeline">
+      <li><span class="when">Sept. 2026 →</span><div><strong>IGEA Finance</strong><span class="role">Analyste en fonds d'investissement, multigestion (alternance)</span></div></li>
+      <li><span class="when">2025 – 2026</span><div><strong>Corporatings</strong><span class="role">Credit Risk Analyst, AI &amp; Fintech (alternance)</span></div></li>
+      <li><span class="when">Juin – juil. 2024</span><div><strong>Crédit Agricole Normandie-Seine</strong><span class="role">Assistant back-office</span></div></li>
+      <li><span class="when">Avr. – juin 2024</span><div><strong>Delahaye &amp; Associés</strong><span class="role">Analyste en gestion de patrimoine (stage)</span></div></li>
+    </ul>
+    <div class="skills">
+      <div><h4>Formation</h4><p>Master Gestion des Instruments Financiers, CY Cergy Paris Université</p></div>
+      <div><h4>Certification</h4><p>Bloomberg Market Concepts</p></div>
+      <div><h4>Outils</h4><p>Python, VBA, Excel, Bloomberg</p></div>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<footer><div class="wrap"><span>Raph · Paris</span><span>Contenus présentés sans données confidentielles</span></div></footer>
+</body>
+</html>
